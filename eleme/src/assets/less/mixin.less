@@ -1,0 +1,67 @@
+.bg-image(@url) {
+  background-image: ~"url('../assets/images/@{url}@2x.png')";
+  background-repeat: no-repeat;
+  @media (-webkit-device-pixel-ratio:3),(min-device-pixel-ratio:3) {
+    background-image: ~'url("../assets/images/@{url}@3x.png")';
+    background-repeat:no-repeat
+  }
+}
+.border-1px(@color) {
+  position: relative;
+  &::after {
+    display: block;
+    content: ' ';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid @color;
+  }
+}
+.border-1px-right(@color) {
+  position: relative;
+  &::after {
+    display: block;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    border-right: 1px solid @color;
+  }
+}
+.set-img(@size) {
+  display: inline-block;
+  width: @size;
+  height: @size;
+}
+.line-through-1px(@size;@color) {
+  display: inline-block;
+  width: @size;
+  height: 1px;
+  background-color: @color;
+}
+.inform-title {
+  display: flex;
+  align-items: center;
+  .title {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 14px;
+    flex: 0 0 56px;
+    padding: 0 12px;
+  }
+  .line {
+    flex-grow: 1;
+    .line-through-1px(110px;rgba(255,255,255,0.2));
+  }
+}
+// 分隔作用块
+.block-spliter {  
+  height: 16px;
+  width: 100%;
+  background-color: #f3f5f7;
+  border-top: 1px solid rgba(7,17,27,0.1);
+  border-bottom: 1px solid rgba(7,17,27,0.1);
+}
